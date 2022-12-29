@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
+import Link from "next/link";
 
 export default function Home() {
   const { t } = useTranslation("Common");
@@ -12,9 +13,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>{t("testH1")}</h1>
+      <div>{`現在の言語 ${localStorage.getItem(`i18nextLng`)}`}</div>
+      <h1>{t("test1")}</h1>
       <button onClick={() => i18n.changeLanguage("ja")}>日本語</button>
       <button onClick={() => i18n.changeLanguage("en")}>英語</button>
+      <Link href="/test">テストページへ</Link>
     </>
   );
 }
