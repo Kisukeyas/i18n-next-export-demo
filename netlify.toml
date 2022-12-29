@@ -1,2 +1,11 @@
 [build.environment]
 NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[build]
+  command = "npm run build && npm run export"
+  publish = "out"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"
