@@ -8,13 +8,10 @@ import jaCommon from "../public/locales/ja/common.json";
 import enTest from "../public/locales/en/test.json";
 import jaTest from "../public/locales/ja/test.json";
 
-const getLocale = () => {
-  const DEFAULT_LNG = "ja";
-  // console.log({ WINDOW: typeof window })
-  if (typeof window === "undefined") return DEFAULT_LNG;
-  // Perform localStorage action
-  return localStorage.getItem("lng") || DEFAULT_LNG;
-};
+const detector = new LanguageDetector(null, {
+  order : ['navigator', 'localStorage']
+})
+
 
 const option: InitOptions = {
   resources: {
@@ -27,12 +24,8 @@ const option: InitOptions = {
       Test: jaTest,
     },
   },
-  lng: getLocale(),
-  detection: {
-    order: ["localStorage", "navigator"],
-  },
 };
 
-i18next.use(LanguageDetector).use(initReactI18next).init(option);
+i18next.use(detector).use(initReactI18next).init(option);
 
 export default i18next;
