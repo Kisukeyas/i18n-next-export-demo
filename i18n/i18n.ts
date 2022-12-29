@@ -9,11 +9,11 @@ import enTest from "../public/locales/en/test.json";
 import jaTest from "../public/locales/ja/test.json";
 
 const getLocale = () => {
-  const DEFAULT_LNG = "en";
+  const DEFAULT_LNG = "ja";
   // console.log({ WINDOW: typeof window })
   if (typeof window === "undefined") return DEFAULT_LNG;
   // Perform localStorage action
-  return localStorage.getItem("i18nextLng") || DEFAULT_LNG;
+  return localStorage.getItem("lng") || DEFAULT_LNG;
 };
 
 const option: InitOptions = {
